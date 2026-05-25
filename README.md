@@ -34,41 +34,24 @@ The generated answer must be based solely on the relevant extracts selected from
 
 ## Planned Runs
 
-We plan to prepare up to 3 runs corresponding to progressively stronger pipelines:
+We plan to prepare up to 3-5 runs corresponding to progressively stronger pipelines:
 
 1. **Baseline Similarity QA**
    - BM25 / lexical retrieval
-   - E5 dense reranking
+   - BGE dense reranking
    - simple extract selection
    - grounded answer generation
 
-2. **Cross-Encoder / NLI Evidence Selection**
+2. **ColBERT + CiteFix**
    - candidate retrieval
-   - NLI-based reranking of evidence
-   - answer generation from factually supported passages
+   - ColBERT dense embeddings
+   - CiteFix grounded citations for claims
 
-3. **Baseline → NLI → NLI with Inference**
-   - baseline retrieval
-   - stronger extract filtering
-   - multiple extraction strategies (LLM / spaCy / NLI-supported)
-   - final grounded answer synthesis
-
-## Repository Structure
-
-```text
-longeval-rag/
-├── README.md
-├── requirements.txt
-├── .gitignore
-├── notebooks/
-│   ├── 01_baseline_similarity_qa.ipynb
-│   ├── 02_cross_encoder_nli.ipynb
-│   └── 03_nli_with_inference.ipynb
-├── src/
-│   ├── nli_reranker.py
-│   ├── extract_llm.py
-│   ├── extract_spacy.py
-│   ├── qa_pipeline.py
-│   └── eval.py
-├── submissions/
-└── data/
+3. **CRAG / CiteFix**
+   - BM25 / lexical retrieval
+   - BGE dense reranking
+   - CRAG grounded answer generation
+   - CiteFix grounded citations for claims
+  
+4. **Manual ChatGPT 5.5 Thinking**
+   - Answers generated manually with ChatGPT 5.5 Thinking
